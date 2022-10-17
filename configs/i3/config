@@ -21,9 +21,6 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# some comentar
-exec for item in `ls $HOME/.config/i3/modules`; do bash $HOME/.config/i3/modules/$item; done
-
 # Set display settings
 exec xrandr --output DP-1 --mode 1920x1080 --left-of DVI-I-1 && xrandr --output DP-1-3 --mode 1920x1080 --left-of DP-1
 # Fix screen tearing
