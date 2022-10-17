@@ -21,25 +21,10 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# Set display settings
-exec xrandr --output DP-1 --mode 1920x1080 --left-of DVI-I-1 && xrandr --output DP-1-3 --mode 1920x1080 --left-of DP-1
-# Fix screen tearing
-exec nvidia-settings --assign CurrentMetaMode="DPY-1: nvidia-auto-select +3840+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DPY-3: nvidia-auto-select +1920+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+# Import and execute modules and configs
+exec run-parts --regex '.*sh' $HOME/.config/i3/modules/
 
-# Git fix
-exec export GIT_SSL_NO_VERIFY=1
-
-# Volume control
-bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +10%
-bindsym XF86AudioLowerVolume exec pactl -- set-sink-volume 0 -10%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-#Screenshot
-bindsym --release $mod+Shift+p exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
-
-#Brightness control
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
+include $HOME/.config/i3/modules/*.conf
 
 # Disable borders
 default_border none
