@@ -1,0 +1,6 @@
+lxpolkit &
+nm-applet &
+dunst &
+compton &
+
+exec i3
