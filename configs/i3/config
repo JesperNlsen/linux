@@ -21,6 +21,11 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Start applications
+exec_always --no-startup-id /opt/Mullvad\ VPN/mullvad-vpn
+exec_always --no-startup-id brave-browser 
+exec_always --no-startup-id fluxgui
+
 # Import and execute modules and configs
 exec run-parts --regex '.*sh' $HOME/.config/i3/modules/
 
@@ -34,7 +39,7 @@ hide_edge_borders both
 floating_modifier $mod
 
 # lock screen
-bindsym $mod+l exec i3lock -c 000000 && sleep 1 &&  xset dpms force suspend
+bindsym $mod+l exec i3lock -c 000000 && sleep 1 && systemctl suspend
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal

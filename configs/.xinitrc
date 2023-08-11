@@ -1,6 +1,5 @@
 lxpolkit &
 nm-applet &
 dunst &
-compton &
-
+xfce4-power-manager &
 exec i3
